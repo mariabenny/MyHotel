@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<div class="container">
+ <div class="row">
+     <form style="    width: 450px;background-color: #daebea;
+     border-radius: 16px;
+     height: 439px;" #form="ngForm" (ngSubmit)="save(form);">
+         <div>
+             <label for="roomNo">Room No</label>
+             <input ngModel #roomNo="ngModel" type="text" name="roomNo" class="form-control">
+         </div>
+         <div>
+             <label for="floorNo">Floor No</label>
+             <input ngModel #floorNo="ngModel" type="text" name="floorNo" class="form-control">
+         </div>
+         <div>
+             <label for="roomType">Room Type</label>
+             <input ngModel #roomType="ngModel" type="text" name="roomType"
+              class="form-control" required>
+         </div>
+         <div>
+             <label for="bedType">Bed Type</label>
+             <input ngModel #bedType="ngModel" type="text" name="bedType" class="form-control">
+         </div>
+         <div>
+             <label for="roomCount">roomCount</label>
+             <input ngModel #roomCount="ngModel" type="number" name="roomCount" class="form-control">
+         </div>
+         <div>
+             <label for="roomRate">roomRate</label>
+             <input ngModel #roomRate="ngModel" type="text" name="roomRate" class="form-control">
+         </div>
+
+         <div class="d-grid mt-2">
+             <button class="btn btn-primary">Save</button>
+         </div>
+     </form>
+ </div>
+</div>

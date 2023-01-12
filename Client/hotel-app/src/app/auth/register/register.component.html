@@ -1,0 +1,131 @@
+<br>
+<br>
+<br>
+
+
+
+
+<!-- <div class="container">
+    <div class="row">
+        <form #form="ngForm" (ngSubmit)="save(form);">
+            <div>
+                <label for="firstName">First Name</label>
+                <input ngModel #firstName="ngModel" type="text" name="firstName" class="form-control">
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input ngModel #lastName="ngModel" type="text" name="lastName" class="form-control">
+            </div>
+            <div>
+                <label for="firstName">Age</label>
+                <input ngModel #age="ngModel" type="number" name="age" min="18" max=
+                "80" class="form-control" required>
+            </div>
+            <div>
+                <label for="phoneNumber">Phone</label>
+                <input ngModel #phoneNumber="ngModel" type="text" name="phoneNumber" class="form-control">
+            </div>
+            <div>
+                <label for="aadhar">Aadhar</label>
+                <input ngModel #aadhar="ngModel" type="text" name="aadhar" class="form-control">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input ngModel #email="ngModel" type="email" name="email" class="form-control">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input ngModel #password="ngModel" type="password" name="password" class="form-control">
+            </div>
+            <div>
+                <label for="cpass">Confirm Password</label>
+                <input ngModel #cpass="ngModel" type="password" name="cpass" class="form-control">
+            </div>
+            <div class="d-grid mt-2">
+                <button class="btn btn-primary" >Save</button>
+            </div>
+
+
+        </form>
+    </div>
+</div> -->
+
+
+<div id="login-box" style="height: 603px;background-color: grey;border-radius: 30px;">
+    <div class="left">
+      <h1>Sign up for Booking</h1>
+      <form #form="ngForm" (ngSubmit)="save(form);">
+
+
+          <div>
+
+            <input ngModel placeholder="FirstName" #firstName="ngModel" type="text" name="firstName" class="form-control" required="a-z,A-Z">
+            <div class="text-danger mt-2" *ngIf="firstName.errors && firstName.touched">
+                <div style="color: black;" *ngIf="firstName.errors?.['required']">Firstname is required</div>
+            </div>
+
+          </div>
+
+
+          <div>
+            <input ngModel placeholder="LastName" #lastName="ngModel" type="text" name="lastName" class="form-control" required="qwertyuiopasdfghjklzxcvbnm" >
+            <div class="text-danger mt-2" *ngIf="lastName.errors && lastName.touched">
+                <div style="color: black;" *ngIf="lastName.errors?.['required']">LastName is required</div>
+            </div>
+        </div>
+
+        <div>
+            <input ngModel placeholder="Age" #age="ngModel" type="number" name="age" min="18" max="60" class="form-control" required="1234567890">
+            <div class="text-danger mt-2" *ngIf="age.errors && age.touched">
+                <div style="color: black;" *ngIf="age.errors?.['required']">Age is required</div>
+                <div style="color: black;" *ngIf="age.errors?.['min']">Age must be 18 or above</div>
+                <div style="color: black;" *ngIf="age.errors?.['max']">Age must be below 60</div>
+            </div>
+          </div>
+
+
+
+          <input ngModel style="margin-top: 20px;" placeholder="PhoneNumber" #phoneNumber="ngModel" type="text" name="phoneNumber" class="form-control">
+          <input ngModel placeholder="Aadhar" #aadhar="ngModel" type="text" name="aadhar" class="form-control">
+
+
+          <div>
+            <input style="color: #080710;" type="email" id="email" name="email" class="form-control" ngModel #email="ngModel" placeholder="Email" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required>
+            <div class="text-danger mt-2" *ngIf="email.errors && email.touched">
+                <div style="color: black;" *ngIf="email.errors?.['required']">Email is required</div>
+                <div style="color: black;" *ngIf="email.errors?.['pattern']">Email is invalid</div>
+            </div>
+          </div>
+
+          <div>
+            <input ngModel style="margin-top: 20px;" required="0-9,a-z,A-Z,!@#$%^&*()" placeholder="Password" #password="ngModel" type="password" name="password" class="form-control" minlength="6" >
+            <div class="text-danger mt-2" *ngIf="password.errors && password.touched">
+                <div style="color: black;" *ngIf="password.errors?.['required']">Password is required</div>
+                <div style="color: black;" *ngIf="password.errors?.['minlength']">Password too short</div>
+
+            </div>
+          </div>
+
+          <div>
+            <input ngModel placeholder="Confirm Password" required="0-9,a-z,A-Z,!@#$%^&*()" #cpass="ngModel" type="password" name="cpass" class="form-control" >
+            <div class="text-danger mt-2" *ngIf="cpass.errors && cpass.touched">
+                <div style="color: black;" *ngIf="cpass.errors?.['required']">Required</div>
+
+            </div>
+          </div>
+
+        <div class="d-grid mt-2">
+            <button class="btn btn-primary" >Save</button>
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+
+    <div class="right">
+
+    </div>
+  </div>

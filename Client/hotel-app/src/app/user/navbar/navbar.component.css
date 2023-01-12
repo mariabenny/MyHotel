@@ -1,0 +1,55 @@
+/* header{
+    background-color: #3f51b5;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 20px;
+    height: 70px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+}
+
+.logo{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+a{
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 10px;
+} */
+
+
+
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: black;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scrolled .navbar-brand {
+  color: black;
+  text-decoration: solid;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scroll,
+.navbar-scrolled {
+  background-color: #cbbcb1;
+}
+
+.mask-custom {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+}

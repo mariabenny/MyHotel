@@ -1,0 +1,130 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--Card-->
+<br>
+<br>
+<br>
+<div class="card shadow mb-5 bg-white rounded">
+
+    <!--Card-Body-->
+    <div class="card-body">
+
+        <!--Card-Title-->
+        <p class="card-title text-center shadow mb-5 rounded">Room Booking Form</p>
+
+        <div class="icons text-center">
+
+            <i class="bi bi-houses" aria-hidden="true"></i>
+
+
+
+        </div>
+
+        <hr>
+
+        <p class="searchText"><strong>Book Rooms</strong></p>
+
+        <!--First Row-->
+        <div class="row mb-3 mt-3">
+
+            <label class="radiobtn"><input type="radio" name="gender" value="male">Book for Self</label>
+            <label class="radiobtn"><input type="radio" name="gender" value="male">Book for a Friend</label>
+
+        </div>
+
+        <form #form="ngForm" (ngSubmit)="booking(form);">
+
+            <!--Second Row-->
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="firstName">First Name</label>
+                        <input ngModel #firstName="ngModel" type="text" name="firstName" class="form-control" required="a-z,A-Z">
+                        <div class="text-danger mt-2" *ngIf="firstName.errors && firstName.touched">
+                            <div style="color: red;" *ngIf="firstName.errors?.['required']">Firstname is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input ngModel #lastName="ngModel" type="text" name="lastName" class="form-control" required="a-z,A-Z">
+                        <div class="text-danger mt-2" *ngIf="lastName.errors && lastName.touched">
+                            <div style="color: red;" *ngIf="lastName.errors?.['required']">Lastname is required</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+            <!--Third Row-->
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <label for="checkIn">Check In</label>
+                    <input ngModel #checkIn="ngModel" placeholder="&#xf073; CheckIn" type="date" name="checkIn"
+                        id="date-picker-example" class="form-control datepicker mb-4"
+                        style="font-family:Arial, FontAwesome" required  [min]="getToday()">
+                        <div class="text-danger mt-2" *ngIf="checkIn.errors && checkIn.touched">
+                            <div style="color: red;" *ngIf="checkIn.errors?.['required']">CheckIn Date is required</div>
+                        </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="checkOut">Check Out</label>
+                    <input ngModel #checkOut="ngModel" placeholder="&#xf073; CheckOut" type="date" name="checkOut"
+                        id="date-picker-example" class="form-control datepicker" style="font-family:Arial, FontAwesome" required [min]="getToday()">
+                    <div class="text-danger mt-2" *ngIf="checkOut.errors && checkIn.touched">
+                        <div style="color: red;" *ngIf="checkOut.errors?.['required']">CheckOut Date is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fourth Row-->
+            <div class="row mt-4">
+
+                <div class="col-sm-6">
+                    <select ngModel #guest="ngModel" class="browser-default custom-select mb-4" id="select" name="guest" required>
+                        <option value="" disabled="" selected="">No : of Guests</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">4</option>
+                    </select>
+                    <div class="text-danger mt-2" *ngIf="guest.errors && checkIn.touched">
+                        <div style="color: red;" *ngIf="guest.errors?.['required']">Number of guests is required</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <select ngModel #noRoom="ngModel" class="browser-default custom-select mb-4" id="select" name="noRoom">
+                        <option value="" disabled="" selected="">No : of Rooms</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <!--Fifth Row-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>
+                        <label for="address">Address</label>
+                        <input ngModel #address="ngModel" type="text" name="address" class="form-control" required="a-z,A-z,0-9">
+                        <div class="text-danger mt-2" *ngIf="address.errors && address.touched">
+                            <div style="color: red;" *ngIf="address.errors?.['required']">Address is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button  class="btn btn-primary float-right mt-5" style="margin-left:40%">Confirm Booking</button>
+        </form>
+    </div>
+</div>

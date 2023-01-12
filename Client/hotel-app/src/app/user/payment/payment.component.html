@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<br>
+<br>
+<div class="card shadow mb-5 bg-white rounded">
+
+    <div class="card-body">
+
+        <p class="card-title text-center shadow mb-5 rounded">Room Booking Form</p>
+
+        <div class="icons text-center">
+
+            <i class="bi bi-houses" aria-hidden="true"></i>
+
+
+
+        </div>
+
+        <hr>
+
+        <p class="searchText"><strong>Payment</strong></p>
+
+
+
+        <form #form="ngForm" (ngSubmit)="payment(form);">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input ngModel #amount="ngModel" type="number" name="amount" class="form-control" required><!--{{room.amount}}-->
+                        <div class="text-danger mt-2" *ngIf="amount.errors && amount.touched">
+                            <div *ngIf="amount.errors?.['required']"> Amount is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="cardHolder">CardHolder Name</label>
+                        <input ngModel #cardHolder="ngModel" type="text" name="cardHolder" class="form-control" required minlength="1">
+                        <div class="text-danger mt-2" *ngIf="cardHolder.errors && cardHolder.touched">
+                            <div *ngIf="cardHolder.errors?.['required']"> Card holder's name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="cardNumber">Card Number</label>
+                        <input ngModel #cardNumber="ngModel" type="text" name="cardNumber" class="form-control" required minlength="10" maxlength="16">
+                        <div class="text-danger mt-2" *ngIf="cardNumber.errors && cardNumber.touched">
+                            <div *ngIf="cardNumber.errors?.['required']"> Card Number is required</div>
+                            <div *ngIf="cardNumber.errors?.['minlength']"> Card Number must be atleast 10 digits</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input ngModel #cvv="ngModel" type="text" name="cvv" class="form-control" required="1" maxlength="3">
+                        <div class="text-danger mt-2" *ngIf="cvv.errors && cvv.touched">
+                            <div *ngIf="cvv.errors?.['required']"> CVV is required</div>
+                            <div *ngIf="cvv.errors?.['minlength']"> CVV must be atmost  3digits</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <label for="expiryDate">Expiry Date</label>
+                        <input ngModel #expiryDate="ngModel" type="text" name="expiryDate" class="form-control" required>
+                        <div class="text-danger mt-2" *ngIf="expiryDate.errors && expiryDate.touched">
+                            <div *ngIf="expiryDate.errors?.['required']"> Expiry Date is required</div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+
+            <div class="row mt-4">
+
+                <div class="col-sm-6">
+                    <select ngModel #cardType="ngModel" class="browser-default custom-select mb-4" id="select" name="cardType">
+                        <option value="" disabled="" selected="">Card Type</option>
+                        <option value="1">Visa</option>
+                        <option value="2">MasterCard</option>
+                        <option value="3">Rupay</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <button    class="btn btn-primary float-right mt-5" style="margin-left:40%">Confirm Payment</button>
+
+            <a  routerLink="/feedback"  class="btn btn-primary float-right mt-5"  style="margin-left:40%;float: left;">Add Feedback</a>
+        </form>
+
+    </div>
+</div>
+
