@@ -11,7 +11,23 @@
         </div>
     </div>
 </div>
-<div  *ngFor="let room of rooms">
+
+
+
+<div class = "tab-pane fade show active" >
+    <ag-grid-angular
+        style="width: 100%; height: 80vh;"
+        class = "ag-theme-balham"
+        [columnDefs]="roomcolumnDefs"
+        [rowData]="roomData"
+        [defaultColDef]="defaultColDef"
+    >
+
+    </ag-grid-angular>
+</div>
+
+
+<!-- <div  *ngFor="let room of rooms">
     <div class="card mb-3" style="width:100v;"><div class="row g-0"><div class="col-md-4"><img
         src="https://th.bing.com/th/id/OIP.1cc4aSnF9JP9Hf0_Ct1-AQHaDt?pid=ImgDet&rs=1"
         alt="Rooms View"
@@ -25,21 +41,20 @@
             <tr>Bed type :{{room.bedType}}</tr>
             <tr>Room count:{{room.roomCount}}</tr>
             <tr>Rate:{{room.roomRate}}</tr>
-            <!-- <tr>
+             <tr>
                 <a [routerLink]="['/user/booking', room.id]"
                 routerLinkActive="router-link-active">Book Now</a>
                 <button class="btn btn-primary" style="margin-left: 580px;margin-top: -350px;width: 170px;">Book Now</button>
-            </tr> -->
+            </tr>
        </th>
         </p>
        <div class=" card card-text " style="background-color :black">
         </div>
        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div></div>
 </div>
-            <!-- <div class="alert alert-info" *ngIf="!contacts">
+            <div class="alert alert-info" *ngIf="!contacts">
                 No contacts found.
-            </div> -->
-        <!-- <div class="col-sm-6">
+            </div> 
+        < <div class="col-sm-6">
             <user-contact></user-contact>
         </div> -->
-

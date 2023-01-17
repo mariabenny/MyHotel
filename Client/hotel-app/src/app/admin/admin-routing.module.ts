@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { HomeComponent } from './home/home.component';
-import AdminRoleGuard from '../helpers/adminGuard';
+import {AdminRoleGuard} from '../helpers/adminGuard';
 
 const routes: Routes = [
   {path: '', component: AdminLayoutComponent, children:[

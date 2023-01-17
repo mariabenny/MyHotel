@@ -11,6 +11,7 @@ using MyHotel.Models;
 
 namespace MyHotel.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class RoomsController : ControllerBase
@@ -23,6 +24,7 @@ namespace MyHotel.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
         {
             return await _context.Rooms.ToListAsync();

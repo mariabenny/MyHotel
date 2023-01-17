@@ -14,12 +14,12 @@ namespace MyHotel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class bookingsController : Controller
+    public class BookingsController : Controller
     {
         private readonly ApplicationDbContext _db;
 
 
-        public bookingsController(ApplicationDbContext db)
+        public BookingsController(ApplicationDbContext db)
 
         {
 

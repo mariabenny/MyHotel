@@ -1,6 +1,7 @@
 import { StaticDetails } from './../../helpers/staticDetails';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Rooms } from '../models/bookingmodels';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,12 @@ export class RoomService {
 
   addRoom(data:any)
   {
-    return this.http.post(`${StaticDetails.API_URL}/rooms`, data);
+    return this.http.post(`${StaticDetails.API_URL}/Rooms`, data);
   }
 
   viewR()
   {
-  return this.http.get(`${StaticDetails.API_URL}/rooms`);
+  return this.http.get(`${StaticDetails.API_URL}/Rooms`);
   }
 
 

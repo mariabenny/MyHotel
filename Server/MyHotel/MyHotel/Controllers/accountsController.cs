@@ -15,7 +15,7 @@ namespace MyHotel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class accountsController : ControllerBase
+    public class AccountsController : ControllerBase
     {
 
         private readonly ApplicationDbContext db;
@@ -25,7 +25,7 @@ namespace MyHotel.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private object signinManager;
 
-        public accountsController(
+        public AccountsController(
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             IConfiguration configuration,
@@ -145,7 +145,7 @@ namespace MyHotel.Controllers
             var claims = new Claim[]
             {
                   new(ClaimTypes.NameIdentifier, user.UserName),
-                  new(ClaimTypes.Role,role),
+                  new(ClaimTypes.Role, role),
                   new(ClaimTypes.Email, user.Email),
                   new("UserId",user.Id),
                   new(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),

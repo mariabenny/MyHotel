@@ -16,6 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import JwtHelper from './helpers/jwtHelper';
 import { JwtInterceptor } from './helpers/interceptors/jwtInterceptor';
+import { AgGridModule } from 'ag-grid-angular';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -32,6 +36,10 @@ import { JwtInterceptor } from './helpers/interceptors/jwtInterceptor';
     AdminModule,
     UserModule,
     HttpClientModule,
+    AgGridModule,
+
+    ReactiveFormsModule,
+
     RouterModule.forRoot([
       {
         path: '', loadChildren: () => import('./public/public-routing.module').then(m => m.PublicRoutingModule)

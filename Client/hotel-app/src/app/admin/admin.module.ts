@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './admin-layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddroomComponent } from './addroom/addroom.component';
 import { AdminviewComponent } from './adminview/adminview.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AdminviewComponent } from './adminview/adminview.component';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AgGridModule
   ]
 })
 export class AdminModule { }
