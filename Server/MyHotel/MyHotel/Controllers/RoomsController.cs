@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,8 @@ namespace MyHotel.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+  
+
     public class RoomsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -24,7 +27,8 @@ namespace MyHotel.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
         {
             return await _context.Rooms.ToListAsync();
@@ -33,6 +37,8 @@ namespace MyHotel.Controllers
 
 
         [HttpGet("bookings")]
+
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
         {
             return await _context.Bookings.ToListAsync();
@@ -89,14 +95,13 @@ namespace MyHotel.Controllers
 //ADMIN ADD ROOMS
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Room>> PostRoom(Room room)
         {
             _context.Rooms.Add(room);
             await _context.SaveChangesAsync();
             return Ok(room);
         }
-
-   
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)

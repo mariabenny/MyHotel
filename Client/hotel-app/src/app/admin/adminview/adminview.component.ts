@@ -31,16 +31,12 @@ export class AdminviewComponent {
 
 
     ngOnInit() {
-
         this.roomService.viewR().subscribe({
             next: (data:any) => {
                 this.roomData = data;
                 console.log(this.roomData);
-
             }
-
         });
-
     }
 
 

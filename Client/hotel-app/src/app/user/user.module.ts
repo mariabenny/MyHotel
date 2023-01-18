@@ -1,5 +1,4 @@
 import { FormsModule } from '@angular/forms';
-import { ErrorInterceptor } from './../helpers/interceptors/errorInterceptor';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

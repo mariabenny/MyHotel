@@ -14,6 +14,9 @@ namespace MyHotel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+   
+
     public class BookingsController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -27,9 +30,10 @@ namespace MyHotel.Controllers
 
         }
 
+       
         [HttpGet]
-
-        public async Task<ActionResult> GetHotels()
+        [Authorize(Roles = "User")]
+        public async Task<ActionResult> GetRooms()
 
         {
             var rooms = await _db.Rooms.ToListAsync();
@@ -64,6 +68,8 @@ namespace MyHotel.Controllers
         }
 
         [HttpPost]
+
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Booking(BookingRequestModel model)
         {
             if (!ModelState.IsValid)
@@ -82,7 +88,7 @@ namespace MyHotel.Controllers
                 CustomerId = model.CustomerId,
                 RoomId = model.RoomId
 
-            };
+            }; 
 
 
             //logic
@@ -115,17 +121,11 @@ namespace MyHotel.Controllers
             });
         }
 
-        //public class book
-        //{
-        //    public string customerId { get; set; }
-        //    public int bookingId { get; set; }
-        //    public int amount { get; set; }
-        //    public string cardHolder { get; set; }
-        //    public string cardNumber { get; set; }
-        //    public CardType cardType { get; set; }
-        //}
+       
 
         [HttpPost("payment")]
+
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Payment(PaymentRequestModel model)
         {
             if (!ModelState.IsValid)
@@ -186,6 +186,8 @@ namespace MyHotel.Controllers
 
 
         [HttpPost("feedback")]
+
+        [Authorize(Roles = "User")]
         public async Task<ActionResult<Feedback>> Feedback(Feedback feedback)
         {
             _db.Feedbacks.Add(feedback);

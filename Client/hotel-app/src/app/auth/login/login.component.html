@@ -152,7 +152,7 @@ button{
 
         <div>
             <label>Email</label>
-            <input type="text"  placeholder="me@example.com" class="form-control" formControlName="email" style="border: solid;border-radius: 13px;">
+            <input type="text"  placeholder="me@example.com" class="form-control" formControlName="email" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" style="border: solid;border-radius: 13px;">
             <!-- <label style="color: #080710;" class="labelt" for="email">Email</label>
             <input style="color: #080710;" type="email" id="email" name="email" class="form-control" ngModel #email="ngModel" placeholder="me@example.com" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required> -->
             <div class="text-danger mt-2" *ngIf="email.errors && email.touched">

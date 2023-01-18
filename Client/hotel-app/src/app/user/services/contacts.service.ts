@@ -20,28 +20,35 @@ export class ContactsService {
 	addContact(contact: any) {
 		return this.http.post(`${StaticDetails.API_URL}/contacts`, contact);
 	}
+
+
     viewRooms() {
-		return this.http.get(`${StaticDetails.API_URL}/rooms`);
+		return this.http.get(`${StaticDetails.API_URL}/Rooms`);
+	
 	}
+
+	
+
+
     Booking(data:any){
-        return this.http.post(`${StaticDetails.API_URL}/booking`, data);
+        return this.http.post(`${StaticDetails.API_URL}/Bookings`, data);
     }
     viewBookings() {
 		//return this.http.get(`${StaticDetails.API_URL}/booking/viewbooking`);
-		return this.http.get(`${StaticDetails.API_URL}/booking/customer-bookings`);
+		return this.http.get(`${StaticDetails.API_URL}/Bookings/customer-bookings`);
 	}
     Payment(data:any){
-        return this.http.post(`${StaticDetails.API_URL}/booking/payment`, data);
+        return this.http.post(`${StaticDetails.API_URL}/Bookings/payment`, data);
     }
     findRoom(id:any){
         //return this.http.get(`${StaticDetails.API_URL}/booking/findroom`,id)
-		return this.http.get(`${StaticDetails.API_URL}/booking/rooms`,id)
+		return this.http.get(`${StaticDetails.API_URL}/Bookings/Rooms`,id)
     }
 	invoice() {
-		return this.http.get(`${StaticDetails.API_URL}/booking/invoice`);
+		return this.http.get(`${StaticDetails.API_URL}/Bookings/invoice`);
 	}
 
 addfeedback(data:any){
- return this.http.post(`${StaticDetails.API_URL}/booking/feedback`, data);
+ return this.http.post(`${StaticDetails.API_URL}/Bookings/feedback`, data);
 }
 }

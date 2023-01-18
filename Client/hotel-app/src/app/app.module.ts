@@ -1,7 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { AdminRoleGuard } from './helpers/adminGuard';
 import {UserRoleGuard} from './helpers/userGuard';
-import { ErrorInterceptor } from './helpers/interceptors/errorInterceptor';
 import { StaticDetails } from './helpers/staticDetails';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
@@ -57,9 +56,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     // JwtHelper,
-    {
-      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
-    },
     {
       provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
     }

@@ -64,10 +64,12 @@ namespace MyHotel.Controllers
 
             var token = await GenerateToken(user);
 
+            var role = ClaimTypes.Role;
+
             return Ok(new ResponseModel<string>
             {
                 Data = token,
-                Message = "Login Successful",
+                Message = "Succesful"
             });
 
         }
@@ -134,41 +136,40 @@ namespace MyHotel.Controllers
 
         private async Task<string> GenerateToken(ApplicationUser user)
         {
-            var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-            var issuer = configuration["Jwt:Issuer"];
-            var audience = configuration["Jwt:Audience"];
-
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var userRoles = await userManager.GetRolesAsync(user);
             var role = userRoles.FirstOrDefault();
-            var claims = new Claim[]
+
+            var claims = new[]
             {
-                  new(ClaimTypes.NameIdentifier, user.UserName),
-                  new(ClaimTypes.Role, role),
-                  new(ClaimTypes.Email, user.Email),
-                  new("UserId",user.Id),
-                  new(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                  new("Role", role)
+                  new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                  new Claim(ClaimTypes.Role, role),
+                  new Claim(ClaimTypes.Email, user.Email),
+                  new Claim("UserId",user.Id),
+                  new Claim("Role", role)
             };
 
+            var key = configuration["Jwt:Key"];
+            var issuer = configuration["Jwt:Issuer"];
+            var audience = configuration["Jwt:Audience"];
+            var symmetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            var credentials = new SigningCredentials(symmetricKey, SecurityAlgorithms.HmacSha256);
+
             var token = new JwtSecurityToken(
-            issuer,
-            audience,
-            claims,
-            expires: DateTime.UtcNow.AddDays(7),
-            signingCredentials: credentials);
+                issuer:issuer,
+                audience:audience,
+                claims: claims,
+                expires: DateTime.UtcNow + TimeSpan.FromDays(7),
+                signingCredentials: credentials);
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GenerateData()
         {
             await _roleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
             await _roleManager.CreateAsync(new IdentityRole() { Name = "User" });
-
-
-
 
             var users = await userManager.GetUsersInRoleAsync("Admin");
             if (users.Count == 0)

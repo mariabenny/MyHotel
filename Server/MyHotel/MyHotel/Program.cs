@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -19,9 +21,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
 {
     option.SignIn.RequireConfirmedPhoneNumber = false;
@@ -31,12 +30,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
     option.Password.RequireNonAlphanumeric = false;
     option.User.RequireUniqueEmail = true;
     option.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz0123456789_";
-    option.Lockout.AllowedForNewUsers = true;
-    option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-    option.Lockout.MaxFailedAccessAttempts = 3;
-})
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 
 builder.Services.AddAuthentication(options =>
@@ -55,19 +49,8 @@ builder.Services.AddAuthentication(options =>
             ValidateAudience = false,
             ValidAudience = builder.Configuration["Jwt:Audience"],
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ClockSkew = TimeSpan.Zero,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
-        //options.Events = new JwtBearerEvents()
-        //{
-        //    OnAuthenticationFailed = C =>
-        //    {
-         //       C.NoResult();
-        //        C.Response.StatusCode = 500;
-         //       C.Response.ContentType = "text/plain";
-          //      return C.Response.WriteAsync(C.Exception.ToString());
-         //   }
-        //};
     });
 
 
