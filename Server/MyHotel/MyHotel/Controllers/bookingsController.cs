@@ -30,7 +30,12 @@ namespace MyHotel.Controllers
 
         }
 
-       
+
+        /// <summary>
+        /// Displays the rooms for a customer.
+        /// </summary>
+        /// <returns>Returns the list of rooms</returns>
+
         [HttpGet]
         [Authorize(Roles = "User")]
         public async Task<ActionResult> GetRooms()
@@ -42,6 +47,12 @@ namespace MyHotel.Controllers
                 Data = rooms
             });
         }
+
+
+        /// <summary>
+        /// Displays the bookings to admin
+        /// </summary>
+        /// <returns>Returns the list of booking</returns>
 
         [HttpGet("customer-bookings")]
 
@@ -55,6 +66,12 @@ namespace MyHotel.Controllers
             });
         }
 
+
+        /// <summary>
+        /// Display the room with corresponding id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Returns the room with the given id</returns>
         [HttpGet("rooms")]
 
         public async Task<ActionResult> FindRoom(int id)
@@ -66,6 +83,14 @@ namespace MyHotel.Controllers
                 Data = roomId
             });
         }
+
+
+        /// <summary>
+        /// Room Booking for customer
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+
 
         [HttpPost]
 
@@ -121,7 +146,15 @@ namespace MyHotel.Controllers
             });
         }
 
-       
+
+
+
+
+        /// <summary>
+        /// Payment by Customer
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
 
         [HttpPost("payment")]
 
@@ -173,6 +206,14 @@ namespace MyHotel.Controllers
         // }
 
 
+
+
+        /// <summary>
+        /// Generating Invoice
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>   Returns invoice with details</returns>
+
         [HttpGet("invoice")]
         public async Task<IActionResult> Invoice(int Id)
         {
@@ -185,6 +226,14 @@ namespace MyHotel.Controllers
         }
 
 
+
+
+
+        /// <summary>
+        /// Feedback from Customer
+        /// </summary>
+        /// <param name="feedback"></param>
+        /// <returns></returns>
         [HttpPost("feedback")]
 
         [Authorize(Roles = "User")]
